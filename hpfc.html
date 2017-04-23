@@ -1,0 +1,827 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<!-- ********************************************************************** -->
+<!-- File name: hpfc.html -->
+<!-- Subject: HPFC page -->
+<!-- -->
+<!-- Created: Nov 26/03 -->
+<!-- Original Issue: PENDING -->
+<!-- Last Edited: Oct 13/05 -->
+<!-- Latest Rev. #: DRAFT -->
+<!-- -->
+<!-- Ref. Docs. & web sites: 
+        jbside.html
+        http://www.w3.org/TR/html4/
+        http://www.w3.org/TR/CSS1
+        http://www.alistapart.com/articles/practicalcss/
+-->
+<!-- Revision Notes: 
+Rev. #: DRAFT (Nov 26-xx/03 by JB)
+What is HPFC page.
+Started adding content on Nov 26/03.
+-->
+<head>
+    <title>The Hybrid Power Flow Controller - Introduction to HPFC</title>
+    <link type="text/css" rel="stylesheet" href="styles/hpfc.css">
+    <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+    <meta name="author" content="Jovan Bebic">
+    <meta name="keywords" content="hybrid power flow controller, HPFC, power flow controller, flexible AC transmission, FACTS, UPFC, STATCOM, SSSC, SVC, power flow, load flow">
+    <meta name="description" content="Hybrid Power Flow Controller (HPFC) uses power electronics converters to enhance the functionality of existing power support in the transmission system">
+    <script language="JavaScript" src="scripts/hpfc.js" type="text/JavaScript"></script>
+</head>
+<body>
+    <!-- The screen is vertically divided for navigation and body text -->
+    <a name="top"></a><table class="jbBase" cellspacing="0" border="0">
+    <tr>
+    <td class="jbBaseSideNav"> 
+      <table>
+            <!-- Side Navigation -->
+            <tr><td align="center"><img src="images/hpfc_logo.gif" alt="hpfc_logo"></td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="welcome.html" target="_top">Welcome!</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="about.html" target="_top">About us</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="facts.html" target="_top">What is FACTS?</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOn" href="hpfc.html" target="_top">What is HPFC?</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="downloads.html" target="_top">Downloads</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="contact.html" target="_top">Contact us</a></td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNavFootA">Last Updated</td></tr>
+            <tr><td class="jbSideNavFootB">
+                <script language="JavaScript" type="text/JavaScript">
+                <!-- 
+                jbDate();
+                //-->
+                </script>
+                <noscript>N/A</noscript>
+                </td>
+            </tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkImg" href="http://validator.w3.org/check/referer"><img class="jbW3img" src="images/valid-html401.gif" alt="Valid HTML 4.01!"></a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkImg" href="http://jigsaw.w3.org/css-validator/check/referer"><img class="jbW3img" src="images/valid-css.gif" alt="Valid CSS!"></a></td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            </table>
+        </td>
+    <td class="jbBaseTxt">
+<!-- Body text is pasted here -->
+<!-- First the title (always the same) -->
+<h1 class="jbTitleA">The Symmetrical<br>
+    <span class="jbHilite">H</span>ybrid 
+    <span class="jbHilite">P</span>ower 
+    <span class="jbHilite">F</span>low 
+    <span class="jbHilite">C</span>ontroller
+</h1>
+<p class="jbTitleB">A new technology for Flexible AC Transmission (FACTS)</p>
+<!-- Actual content text -->
+<h2 class="jb1">The Hybrid Power Flow Controller</h2>
+<p class="jb1">The Hybrid Power Flow Controller uses two equally rated 
+voltage-sourced converters to upgrade the functionality of the existing switched 
+capacitors or static VAR compensators (SVCs). Since static converters are used together 
+with passive devices, the power flow controller can be considered <em>hybrid</em> 
+and it is therefore named a "Symmetrical Hybrid Power Flow Controller" (HPFC). 
+</p>
+<p class="jb1">The work in my thesis <a class="jbjmpref" href="#ref-1">[1]</a> demonstrates 
+that by using appropriate converter control the functionality of switched capacitors and SVCs can be 
+changed from reactive power support to the generalized power flow control &ndash; the functionality 
+commonly associated with the UPFC. The key benefit of the new topology is that it fully utilizes 
+existing equipment and thereby the required ratings of the additional converters are substantially 
+lower than the ratings of the comparable UPFC.
+</p>
+<p class="jb1">Before we start &ndash; some of you might prefer to read a paper than to navigate the 
+pages. To view or download a pdf copy of the HPFC paper presented at the 2006 PES General Meeting in 
+Montreal click <a class="jbjmpref" href="hpfc_pes2006.pdf">here</a>.
+</p>
+<h2 class="jb1">Table of Contents</h2>
+    <ol class="jbTOC">
+        <li><a name="toc-1" href="#h-1">Proposed Topology</a></li>
+        <li><a name="toc-2" href="#h-2">Equivalent Circuit and Operating Constraints</a></li>
+        <li><a name="toc-3" href="#h-3">A Glance at the Big Picture</a></li>
+        <li><a name="toc-4" href="#h-4">Steady State Operation</a>
+            <ol class="jbTOC">
+            <li><a name="toc-4.1" href="#h-4.1">Geometric Interpretation of Power Balance</a></li>
+            <li><a name="toc-4.2" href="#h-4.2">Solving Steady State Operating Points</a></li>
+            <li><a name="toc-4.3" href="#h-4.3">Representative Operating Modes of the HPFC</a></li>
+            </ol>
+        </li>
+        <li><a name="toc-5" href="#h-5">The Notion of Reachable Sets</a></li>
+        <li><a name="toc-6" href="#h-6">The P-delta Curves of the HPFC</a>
+            <ol class="jbTOC">
+            <li><a name="toc-6.1" href="#h-6.1">Effects of Limit Conditions and BM</a></li>
+            <!-- <li><a name="toc-6.2" href="#h-6.2">Effects of Point of Installation and Relative Converter Sizes</a></li> -->
+            <li><a name="toc-6.3" href="#h-6.3">Comparison of the HPFC with the UPFC</a></li>
+            </ol>
+        </li>
+        <li><a name="toc-7" href="#h-7">Alternative HPFC Topologies</a></li>
+        <li><a name="toc-8" href="#h-8">References</a></li>
+    </ol>
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<h2 class="jb1"><a name="h-1" title="go back to this item in TOC" href="#toc-1">
+1</a>&nbsp;&nbsp;Proposed Topology
+</h2>
+<p class="jb1">A block diagrammatic view of a typical HPFC application is shown in 
+Fig.&nbsp;1. 
+The HPFC is installed at some point along the transmission line connecting two 
+electrical regions characterized by their The'venin's equivalent voltage 
+sources <em>V</em><sub>S</sub> and <em>V</em><sub>R</sub>. The line is thereby 
+divided into two segments represented by the equivalent reactances X<sub>S</sub> 
+and X<sub>R</sub>. Indices &quot;S&quot; and &quot;R&quot; identify &quot;sending&quot; 
+and &quot;receiving&quot; end/segment of the line.
+<!--
+The HPFC is installed on a transmission line that connects two electrical 
+areas. The particular point of installation will often be dictated by the location of 
+existing equipment, and in general it will be "within" the transmission line, i.e., 
+at some distance from strong voltage buses. 
+-->
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/hpfc.gif" alt="HPFC - topology"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;1</td>
+        <td class="jbFigCap">Hybrid Power Flow Controller (HPFC) - Topology</td>
+    </tr>
+</table>
+<p class="jb1">Central to the HPFC's topology is the shunt connected source of 
+reactive power &ndash; shown as the variable capacitance in Fig.&nbsp;1.
+Next, there are two voltage&ndash;sourced converters (VSCs) connected to the associated line
+segments in series using coupling transformers. The converters share a common DC
+circuit, coupling each other's DC terminals. 
+</p>
+<p class="jb1">By controlling the magnitudes and angles 
+of voltages supplied by the converters, the flow of active power through the line and 
+the amounts of reactive power supplied to the corresponding line segments can be 
+simultaneously and independently controlled. The control of the shunt device is 
+coordinated with the control of converters to supply the bulk of the total required 
+reactive power.
+</p>
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h2 class="jb1"><a name="h-2" title="go back to this item in TOC" href="#toc-2">
+2</a>&nbsp;&nbsp;Equivalent Circuit and Operating Constraints
+</h2>
+<p class="jb1">A simplified single phase equivalent circuit &ndash; including the HPFC, the 
+interconnected electrical regions, and the corresponding line segments &ndash; is shown in 
+Fig.&nbsp;2(a). 
+</p>
+      <p class="jb1"> The variable capacitance, labeled BM<sub></sub>, represents 
+        the controllable shunt connected variable susceptance. The range of values 
+        this parameter can assume depends on the installed power components; in 
+        general case it can be positive (capacitive), zero, or negative (inductive). 
+      </p>
+<p class="jb1">
+Voltage sources <em>V</em><sub>X</sub> and <em>V</em><sub>Y</sub> represent the high voltage 
+equivalents of voltages generated by the VSCs. The common DC circuit of the VSCs is represented 
+by the capacitor C<sub>DC</sub>, and this capacitor is charged or discharged based on the 
+difference of active powers coupled by the converters. 
+</p>
+
+<p class="jbCen"><img class="jbFigImg" src="images/equivcirc01a.gif" alt="HPFC - equivalent circuit"></p>
+<p class="jbCen">(a)</p>
+<p class="jbCen">&nbsp;</p>
+<p class="jbCen"><img class="jbFigImg" src="images/equivcirc01b.gif" alt="HPFC - operating constraints"></p>
+<p class="jbCen">(b)</p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;2</td>
+        <td class="jbFigCap">HPFC &ndash; Equivalent circuit and operating constraints</td>
+    </tr>
+</table>
+<p class="jb1">
+This circuit is subject to many constraints &ndash; and we summarized them in 
+Fig.&nbsp;2(b). 
+</p>
+<p class="jb1">
+First, converters' voltage ratings impose magnitude limits on 
+<em>V</em><sub>X</sub> and <em>V</em><sub>Y</sub>. 
+Additionally, magnitudes of <em>I</em><sub>S</sub> and <em>I</em><sub>R</sub> are limited, 
+as these currents flow through the converters' switches. 
+<!--
+Additionally, converters' current ratings 
+impose limits on magnitudes of <em>I</em><sub>S</sub> and <em>I</em><sub>R</sub>, as these 
+currents flow through the converter switches. 
+-->
+Then, line insulation requires that magnitudes 
+of voltages <em>V</em><sub>1</sub> and <em>V</em><sub>2</sub> are limited, and voltage ratings of 
+the shunt susceptance require limited magnitude of <em>V</em><sub>M</sub>. 
+And finally, in order to operate the converters, we require that <em>V</em><sub>DC</sub> is 
+maintained at a steady value, so in steady state <em>P</em><sub>X</sub> has to be equal 
+<em>P</em><sub>Y</sub>.
+</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h2 class="jb1"><a name="h-3" title="go back to this item in TOC" href="#toc-3">
+3</a>&nbsp;&nbsp;A Glance at the Big Picture</h2>
+
+<p class="jb1">Before we get too deep into the analysis, let us sum up what we have 
+this far... We introduced the new topology and represented it with a reasonably simple 
+equivalent circuit. Furthermore, we identified and explained the constraints applicable 
+to this circuit. 
+</p> 
+
+<p class="jb1"> 
+So, things are beginning to look quite technical &ndash; and we fear that we may start to loose 
+some of the audience. To postpone that, let us take a quick look at the big picture, 
+and explain what we are setting out to do... </p>
+
+<p class="jb1"> We are proposing to install 
+this <em>fancy new HPFC device</em> on a transmission line, and use it to control the flow 
+of power through the line. So, to sell these things, we will have to approach someone 
+that owns a transmission line (or runs a transmission system) and say: <em>Look, 
+you install such and such equipment, and you achieve such and such range of 
+control for power flow... The equipment will cost you some money, but you 
+will get this wonderful flexibility to run your line harder, transfer more power, 
+and make more money. </em> 
+</p> 
+
+<p class="jb1"> The conclusion? To sell these things, we have to be able to quantify 
+the benefits they provide, i.e., we have to be able to compute the range of 
+achievable power transfer given the line parameters and the proposed equipment 
+ratings.
+<!--
+In simple terms - 
+there has to be a mapping from investment dollars to a quantifiable benefit, or else 
+there will be no sales. 
+-->
+</p>
+
+<p class="jb1"> Ok! We are now ready to return to the technical discussion...</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h2 class="jb1"><a name="h-4" title="go back to this item in TOC" href="#toc-4">
+4</a>&nbsp;&nbsp;Steady State Operation
+</h2>
+
+<p class="jb1"> Our ultimate objective is now clear &ndash; solve the range of power transfer 
+given the line parameters and the converters' ratings. For starters, however, let us discuss a 
+smaller problem &ndash; solving for one "viable" operating point. Following is the problem statement 
+in technical terms...
+</p>
+
+<p class="jb1"> We seek to find voltage vectors 
+<strong>V</strong><sub>X</sub> and <strong>V</strong><sub>Y</sub> and a value 
+for scalar variable <em>B</em><sub>M</sub>, such that a specified amount of 
+power (<em>P</em><sub>ref</sub>) is transferred through the line and that the resulting 
+operating point satisfies all constraints listed in Fig.&nbsp;2(b). 
+We will refer to such solution as to a "viable" steady state operating point resulting 
+in power transfer <em>P</em>=<em>P</em><sub>ref</sub>. The operating point is "viable" 
+if and only if it satisfies the constraints of Fig.&nbsp;2(b).
+</p>
+
+<!--
+The power 
+flow controller enables transfer of a specified amount of power (e.g. P2) through
+the controlled transmission line. Of course, transferring the specified amount of active power
+through the line stipulates that the reactive powers supplied to the sending and receiving
+segments of the line (Q1 and Q2) are within certain limits. The particular choice of Q1
+and Q2 depends on the parameters of the line and on the given system conditions (i.e.
+magnitudes of VS and VR and their relative angle). In general, the reference values for P2,
+Q1, and Q2 are obtained from a load flow study.
+
+The viable operating points could be obtained using iterative numerical techniques. A
+traditional approach is to express the desired output quantities (i.e., P2, Q1, and Q2) and
+variables subject to constraints (i.e., PX-PY, IS, IR, jV1j, jV2j, and jVMj) as functions
+of control variables (VX, DX, VY, DY, BM); and then, to use numerical iterations to achieve
+the desired solution. It can be observed that five control variables are at disposal to solve
+a system of four nonlinear equations, (i.e., P2 = P2ref , Q1 = Q1ref , Q2 = Q2ref , and
+PX - PY = 0). The existence of an additional degree of freedom gives rise to a notion of
+optimization, and qualifies the problem of selecting viable operating points into the class of
+problems of nonlinear constrained optimization. 
+-->
+
+<p class="jb1"> Let us look at this problem more closely... A scholarly approach to solving 
+these sorts of problems is to express the desired output quantities (i.e., <em>P</em>) 
+and variables subject to constraints (i.e., 
+<em>P</em><sub>X</sub>&minus;<em>P</em><sub>Y</sub>, 
+|<strong>I</strong><sub>S</sub>|, |<strong>I</strong><sub>R</sub>|, 
+|<strong>V</strong><sub>1</sub>|, |<strong>V</strong><sub>2</sub>|, and 
+|<strong>V</strong><sub>M</sub>|) as functions of control variables 
+(<strong>V</strong><sub>X</sub>, <strong>V</strong><sub>Y</sub>, <em>B</em><sub>M</sub>); 
+and then, to use numerical iterations to achieve the desired solution. It can be observed 
+that five control variables (two vectors and one scalar) are at disposal to solve a system 
+of two nonlinear equations, (<em>P</em>=<em>P</em><sub>ref</sub>, and 
+<em>P</em><sub>X</sub>&minus;<em>P</em><sub>Y</sub>=0). The existence of additional degrees of 
+freedom gives rise to a notion of optimization, and qualifies the problem of selecting 
+viable operating points into the class of problems of nonlinear constrained optimization.
+</p>
+
+<!--
+<p class="jb1"> Well, now we know we are in trouble! For those not informed - there is 
+no known method that can guarantee a solution of global optimum for this class of problems. 
+And, what's more important, if we can't find one solution, we can certainly kiss goodbye 
+our ultimate objective of finding the range of power transfer.
+</p>
+-->
+<p class="jb1"> Well, you say, this does not look good anymore! </p>
+<p class="jb1"> I now have to iterate to find each solution; 
+then &ndash; when I find it &ndash; it may or may not be a global optimum, and I don't know how to check 
+if it is. And &ndash; to top it all off &ndash; we are talking about one solution here, and we need 
+an optimal solutions for each pair of vectors <strong>V</strong><sub>S</sub> and 
+<strong>V</strong><sub>R</sub> (varying system conditions). 
+</p>
+
+<p class="jb1"> But don't give up just yet! Because the solutions can be found directly (without 
+iterations) &ndash; we just need to use a <em>witty approach</em>. Following are the two 
+key steps that unlocked the puzzle.
+</p>
+
+<p class="jb1">
+First, we abandoned the objective of seeking the solutions in power space 
+(i.e., forcing that <em>P</em>=<em>P</em><sub>ref</sub>), and went to find 
+viable solutions in the space of line currents (<strong>I</strong><sub>S</sub>, 
+<strong>I</strong><sub>R</sub>). 
+</p>
+
+<p class="jb1">
+And second, we found a geometric interpretation for the constraint of power balance 
+(<em>P</em><sub>X</sub>=<em>P</em><sub>Y</sub>), and based on it were able to 
+directly select the currents (<strong>I</strong><sub>S</sub>, 
+<strong>I</strong><sub>R</sub>) that meet this condition. 
+</p>
+
+<p class="jb1">
+With the above two steps combined, it was possible to directly solve for minimum and maximum 
+power transfer, and to observe effects of all constraints. Furthermore, we could study collective 
+or individual impact of the constraints with virtually no penalty in processing complexity. 
+</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h3 class="jb1"><a name="h-4.1" title="go back to this item in TOC" href="#toc-4.1">
+4.1</a>&nbsp;&nbsp;Geometric Interpretation of Power Balance
+</h3>
+
+<p class="jb1">
+The formulation of power balance given by <em>P</em><sub>X</sub>=<em>P</em><sub>Y</sub> 
+is not convenient as it involves both the control (<strong>V</strong><sub>X</sub> and 
+<strong>V</strong><sub>Y</sub>) and the controlled variables 
+(<strong>I</strong><sub>S</sub> and <strong>I</strong><sub>R</sub>). 
+A formulation of the power balance constraint invariant to changes in 
+converter voltages is therefore preferable. Referring to Fig.&nbsp;3(a) the condition 
+given by <em>P</em><sub>X</sub>=<em>P</em><sub>Y</sub> stipulates the 
+constant stored energy in the DC capacitor. Furthermore, total energy stored in the 
+three&ndash;phase susceptance is, in steady state, constant. Therefore, if losses are neglected, 
+condition <em>P</em><sub>X</sub>=<em>P</em><sub>Y</sub> may be replaced by the
+condition <em>P</em><sub>1</sub>=<em>P</em><sub>2</sub>. While improved, this formulation 
+still does not provide the desired invariance as it depends on voltage vectors 
+<strong>V</strong><sub>1</sub> and <strong>V</strong><sub>2</sub>. 
+The final formulation is obtained by recognizing that if line segments are 
+lossless, <em>P</em><sub>S</sub>=<em>P</em><sub>1</sub> and 
+<em>P</em><sub>2</sub>=<em>P</em><sub>R</sub>. Hence, for a lossless system the condition 
+given by <em>P</em><sub>X</sub>=<em>P</em><sub>Y</sub> can be expressed as 
+<em>P</em><sub>S</sub>=<em>P</em><sub>R</sub>. The complete transition is recapitulated 
+in Fig,&nbsp;3(b).
+</p>
+
+<p class="jbCen"><img class="jbFigImg" src="images/equivcirc02a.gif" alt="Power flow"></p>
+<p class="jbCen">(a)</p>
+<p class="jbCen">&nbsp;</p>
+<p class="jbCen"><img class="jbFigImg" src="images/equivcirc02b.gif" alt="Power balance transformation"></p>
+<p class="jbCen">(b)</p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;3</td>
+        <td class="jbFigCap">HPFC &ndash; Transformation of condition of converters' power balance</td>
+    </tr>
+</table>
+
+<p class="jb1">
+It is advantageous to provide a geometric interpretation for this condition. 
+Power is proportional to scalar product of voltage and current. 
+Hence, for a given vector <strong>V</strong><sub>S</sub>, sending end power 
+<em>P</em><sub>S</sub> is proportional to the projection of <strong>I</strong><sub>S</sub> 
+onto <strong>V</strong><sub>S</sub>. Therefore, as depicted in Fig.&nbsp;4, current vectors 
+<strong>I</strong><sub>S1</sub> and <strong>I</strong><sub>S2</sub> transfer the same 
+sending end power, as would any other current vector that has its tip on the same 
+line perpendicular to <strong>V</strong><sub>S</sub>. This line may be considered 
+a "<em>constant power line</em>".
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/equalpower01.gif" alt="Constant power line"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;4</td>
+        <td class="jbFigCap">Constant power line</td>
+    </tr>
+</table>
+
+<p class="jb1">
+Hence, the constant power line gives the loci of solutions for current 
+<strong>I</strong><sub>S</sub> that couple specified value of active power 
+<em>P</em><sub>S</sub> from the voltage source <strong>V</strong><sub>S</sub>. 
+An analogous constant power line representing solutions for <strong>I</strong><sub>R</sub> 
+can be constructed perpendicular to voltage vector <strong>V</strong><sub>R</sub>. 
+The condition of power balance between the converters can hence be expressed 
+as the requirement to seek the solutions for vectors <strong>I</strong><sub>S</sub> 
+and <strong>I</strong><sub>R</sub> that reside on the specified matching pair of 
+constant power lines. A pair of constant power lines such that 
+<em>P</em><sub>S</sub>=<em>P</em><sub>R</sub> will be called "equal power lines". 
+</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h3 class="jb1"><a name="h-4.2" title="go back to this item in TOC" href="#toc-4.2">
+4.2</a>&nbsp;&nbsp;Solving Steady State Operating Points
+</h3>
+
+<p class="jb1">
+Fig.&nbsp;5(a)&ndash;(d) illustrates the steps of the procedure. Voltage vectors 
+<strong>V</strong><sub>S</sub> and <strong>V</strong><sub>R</sub>, and equal 
+power lines corresponding to the desired power flow 
+<em>P</em><sub>R</sub>(=<em>P</em><sub>S</sub>) are shown in Fig.&nbsp;5(a). 
+Current vectors <strong>I</strong><sub>S</sub> and <strong>I</strong><sub>R</sub> 
+are chosen so that their tips lie on these equal power lines. There is hence one 
+degree of freedom in choosing the location for each vector. This degree of freedom 
+can be viewed as freedom to select the amount of reactive power supplied from 
+the corresponding line end. Specifying <em>Q</em><sub>S</sub> selects a unique 
+<strong>I</strong><sub>S</sub>, and specifying <em>Q</em><sub>R</sub> 
+selects a unique <strong>I</strong><sub>R</sub>. 
+</p>
+
+<p class="jb1">
+Voltages <strong>V</strong><sub>1</sub> and <strong>V</strong><sub>2</sub> are obtained 
+by subtracting and adding voltage drops across the respective line segments, as shown in 
+Fig.&nbsp;5(b).
+</p>
+
+<p class="jb1">
+Next, <strong>I</strong><sub>M</sub> and <strong>V</strong><sub>M</sub> are obtained 
+as shown in Fig.&nbsp;5(c).
+</p>
+
+<p class="jb1">
+Finally, <strong>V</strong><sub>X</sub> and <strong>V</strong><sub>Y</sub> are 
+found as shown in Fig.&nbsp;5(d).
+</p>
+
+<p class="jbCen"><img class="jbFigImg" src="images/equalpower02.gif" alt="Step 1"></p>
+<p class="jbCen">(a)</p>
+<p class="jbCen">&nbsp;</p>
+<p class="jbCen"><img class="jbFigImg" src="images/equalpower03.gif" alt="Step 2"></p>
+<p class="jbCen">(b)</p>
+<p class="jbCen">&nbsp;</p>
+<p class="jbCen"><img class="jbFigImg" src="images/equalpower04.gif" alt="Step 3"></p>
+<p class="jbCen">(c)</p>
+<p class="jbCen">&nbsp;</p>
+<p class="jbCen"><img class="jbFigImg" src="images/equalpower05.gif" alt="Step 4"></p>
+<p class="jbCen">(d)</p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;5</td>
+        <td class="jbFigCap">A procedure for solving steady state operating points based on specified <em>P</em><sub>R</sub>(=<em>P</em><sub>S</sub>), <em>Q</em><sub>S</sub>, and <em>Q</em><sub>R</sub></td>
+    </tr>
+</table>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h3 class="jb1"><a name="h-4.3" title="go back to this item in TOC" href="#toc-4.3">
+4.3</a>&nbsp;&nbsp;Representative Operating Modes of the HPFC
+</h3>
+<p class="jb1">
+The above procedure can now be used to construct arbitrarily many vector diagrams. 
+Some illustrative examples are given in Figs.&nbsp;6&ndash;10. 
+</p>
+<p class="jb1">
+Let us first discuss the operating point that we just found &ndash; we repeated it in 
+Fig.&nbsp;6. It corresponds to the power flow lower than the "naturally occurring" 
+power flow. Notice that <strong>V</strong><sub>1</sub> and <strong>V</strong><sub>2</sub> 
+are positioned in such way as to reduce the angular difference between the voltages 
+<strong>V</strong><sub>S</sub> and <strong>V</strong><sub>R</sub>. 
+<!--
+So instead of having the angle delta pushing the power flow through the line, 
+we now have the sum of deltaS and deltaR. 
+-->
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/steadystate01.gif" alt="Reduced power flow"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;6</td>
+        <td class="jbFigCap">HPFC used to reduce the power flow on a line</td>
+    </tr>
+</table>
+
+<p class="jb1"> The diagram in Fig.&nbsp;7 demonstrates a possibility to 
+maintain the same line currents for a step changed value of <em>B</em><sub>M</sub>. 
+Relative to Fig&nbsp;6, lower value of <em>B</em><sub>M</sub> was used. Now, if 
+<strong>I</strong><sub>S</sub> and <strong>I</strong><sub>R</sub> are to be 
+maintained at the same value, <strong>I</strong><sub>M</sub> has to remain the same; 
+hence <strong>V</strong><sub>M</sub> must be increased. Fig.&nbsp;7 demonstrates 
+that this can be accomplished by reconfiguring the converters' voltages. 
+</p>
+
+<p class="jb1"> But, notice another thing here! Any line operating point 
+(characterized by a pair of vectors <strong>I</strong><sub>S</sub> and 
+<strong>I</strong><sub>R</sub>) may have infinitely many "internal operating points". 
+Notice that if you can vary <em>B</em><sub>M</sub> smoothly (as you can in an SVC), 
+you will have a different triplet of vectors 
+(<strong>V</strong><sub>M</sub>, <strong>V</strong><sub>X</sub>, <strong>V</strong><sub>Y</sub>) 
+for each value of <em>B</em><sub>M</sub>. This gives rise to <em>optimizing</em> the choice of 
+internal operating point. Simply put, if we choose the value for <em>B</em><sub>M</sub> 
+intelligently, the converters' voltages can be reduced. Hence, the converters' ratings can be 
+reduced, and the whole installation can be made more affordable. We will talk more about 
+this later...
+</p>
+
+<p class="jbCen"><img class="jbFigImg" src="images/steadystate02.gif" alt="Step change of BM"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;7</td>
+        <td class="jbFigCap">Maintaining the same line operating point using step changed value of <em>B</em><sub>M</sub></td>
+    </tr>
+</table>
+
+<p class="jb1"> In Fig.&nbsp;8 we demonstrate the decoupled control of reactive power supplied 
+to the receiving end of the line. Converters' voltages are now configured so as to move 
+<strong>I</strong><sub>R</sub> along its constant power line and reduce the value of 
+<em>Q</em><sub>R</sub>. Positions of vectors corresponding to Fig.&nbsp;6 are shown in 
+dashed blue lines to help quantify the difference. 
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/steadystate03.gif" alt="Decoupled control of QR"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;8</td>
+        <td class="jbFigCap">Decoupled control of <em>Q</em><sub>R</sub></td>
+    </tr>
+</table>
+
+<p class="jb1">
+Increased power flow is shown in Fig.&nbsp;9. Notice that <strong>V</strong><sub>1</sub> 
+is now "below" and <strong>V</strong><sub>2</sub> "above" <strong>V</strong><sub>M</sub> 
+&ndash; resulting in the increased combined angle. As expected, the magnitudes of 
+<strong>I</strong><sub>S</sub> and <strong>I</strong><sub>R</sub> are increased. 
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/steadystate04.gif" alt="Increased power flow"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;9</td>
+        <td class="jbFigCap">Increased power flow</td>
+    </tr>
+</table>
+
+<p class="jb1">
+Finally, we show the reversal of power flow in Fig.&nbsp;10. Relative position of 
+<strong>V</strong><sub>M</sub> and <strong>I</strong><sub>M</sub> indicates 
+that <em>B</em><sub>M</sub> is inductive in this case. 
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/steadystate05.gif" alt="Power flow reversal"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;10</td>
+        <td class="jbFigCap">Power flow reversal</td>
+    </tr>
+</table>
+
+<p class="jb1"> The steady state operating points presented by these vector diagrams show 
+that the Hybrid Power Flow Controller has the qualitative characteristics of a UPFC. 
+Specifically, it can control the flow of active power through the transmission line and 
+supply the prescribed amounts of reactive power to sending and receiving segments of the line. 
+But, while the UPFC uses a shunt connected converter, the HPFC needs only a shunt connected 
+capacitor &ndash; a considerable advantage considering the converter costs. In the next few 
+sections we will make a more detailed comparison between these two devices; let us start by 
+introducing a framework for this comparison &ndash; the reachable sets. 
+</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h2 class="jb1"><a name="h-5" title="go back to this item in TOC" href="#toc-5">
+5</a>&nbsp;&nbsp;The Notion of Reachable Sets
+</h2>
+<p class="jb1"> Recall our discussion in section 3 &ndash; we are selling these things based 
+on the premise that they control the flow of power through the transmission line. Let us 
+now take a closer look at the problem statement. 
+</p>
+<!--
+<ol class="jbTOC">
+<li>We will be looking at some transmission line with known parameters.</li>
+<li>We will know the converter ratings that we can afford to install.</li>
+<li>So, for a given set of system conditions &ndash; what can this setup do?</li>
+</ol>
+-->
+<p class="jb1">1)&nbsp;&nbsp;We will be looking at some transmission line with known parameters.</p>
+<p class="jb1">2)&nbsp;&nbsp;We will know the converter ratings that we can afford to install.</p>
+<p class="jb1">3)&nbsp;&nbsp;So, for a given set of system conditions &ndash; what can this setup do?</p>
+<p class="jb1">What are all possible solutions for <strong>I</strong><sub>S</sub> and 
+<strong>I</strong><sub>R</sub> that satisfy all the constraints. We named this set the 
+<em>reachable set</em> &ndash; because this is what can be reached "control wise" with the given 
+equipment.
+</p>
+<p class="jb1"> So, once we determine what the reachable currents are &ndash; it is easy 
+to map that into the set of values for <em>P</em>, <em>Q</em><sub>1</sub> and 
+<em>Q</em><sub>2</sub>. And once we know the reachable sets, we can plot the P&ndash;&delta; 
+curves to answer the question of power flow control. 
+</p>
+<p class="jb1"> This indirect approach of computing the reachable set in current space 
+<strong>FIRST</strong> and then mapping it over to the <em>PQQ</em> space is a very 
+important contribution of this work. Traditional approaches attempt to compute the 
+<em>PQQ</em> set directly using iterations. In contrast, we solve the set of currents 
+analytically and then simply map it over to the <em>PQQ</em>. This is shown pictorially 
+in Fig.&nbsp;11. 
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/reachable_set_v1.gif" alt="ReachableSet"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;11</td>
+        <td class="jbFigCap">Reachable set</td>
+    </tr>
+</table>
+
+<p class="jb1"> The process for computing reachable sets is discussed in detail 
+in the thesis <a class="jbjmpref" href="#ref-1">[1]</a>. They are computed in a 
+way that facilitates easy extraction of P&ndash;&delta; curves. The representative P&ndash;&delta; curves 
+are shown and discussed in the next section.
+</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h2 class="jb1"><a name="h-6" title="go back to this item in TOC" href="#toc-6">
+6</a>&nbsp;&nbsp;The P&ndash;&delta; Curves of the HPFC
+</h2>
+<p class="jb1"> Consider first the P&ndash;&delta; curves shown in Fig.&nbsp;12. 
+It illustrates the range of power flow control for three discrete values 
+of <em>B</em><sub>M</sub>: positive, zero and negative. The positive value 
+is four times larger than the negative one. Only the converter voltage 
+limits were applied in the calculations. </p>
+
+<p class="jb1">Now, for each given value of <em>B</em><sub>M</sub> we can control the 
+power flow between the upper and the lower curve, and since the regions overlap, we 
+conclude that if we also change BM, we can move from the lowest to the highest curve.
+</p>
+
+<p class="jbCen"><img class="jbFigImg" src="images/pdelta01.gif" alt="P-delta"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;12</td>
+        <td class="jbFigCap">HPFC P&ndash;&delta; curves 
+        (|<strong>V</strong><sub>X</sub>|&nbsp;&lt;&nbsp;0.2&nbsp;p.u. and 
+        |<strong>V</strong><sub>Y</sub>|&nbsp;&lt;&nbsp;0.2&nbsp;p.u.)</td>
+    </tr>
+</table>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h3 class="jb1"><a name="h-6.1" title="go back to this item in TOC" href="#toc-6.1">
+6.1</a>&nbsp;&nbsp;Effects of Limit Conditions and <em>B</em><sub>M</sub>
+</h3>
+<p class="jb1">
+The curves in Fig.&nbsp;13 consider the terminal voltage limits and the converter current
+limits. The blue curve is the topmost curve from the previous graph and I
+included it here to show how drastic is the change due to the application of limits.
+You can notice here that there are no valid solutions at the large values of
+transmission angle. This comes from the fact that even if you apply all the
+voltage of the converters to oppose the voltage across the line, it still cannot limit
+the current and the converters must go into bypass.
+</p>
+
+<p class="jbCen"><img class="jbFigImg" src="images/pdelta02.gif" alt="P-delta"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;13</td>
+        <td class="jbFigCap">HPFC P&ndash;&delta; curves:&nbsp; 
+        |<strong>V</strong><sub>X</sub>|&nbsp;&lt;&nbsp;0.2&nbsp;p.u. 
+        |<strong>V</strong><sub>Y</sub>|&nbsp;&lt;&nbsp;0.2&nbsp;p.u. <br>
+        |<strong>V</strong><sub>1</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u. 
+        |<strong>V</strong><sub>2</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u. 
+        |<strong>I</strong><sub>S</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u.) 
+        |<strong>I</strong><sub>R</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u.</td>
+    </tr>
+</table>
+<p class="jb1">
+Now in real applications, this positive value of BM will be arranged as a number
+of smaller capacitor banks; the corresponding graphs are shown in Fig.&nbsp;14. 
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/pdelta03.gif" alt="P-delta"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;14</td>
+        <td class="jbFigCap">HPFC P&ndash;&delta; curves:&nbsp; 
+        |<strong>V</strong><sub>X</sub>|&nbsp;&lt;&nbsp;0.2&nbsp;p.u. 
+        |<strong>V</strong><sub>Y</sub>|&nbsp;&lt;&nbsp;0.2&nbsp;p.u. <br>
+        |<strong>V</strong><sub>1</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u. 
+        |<strong>V</strong><sub>2</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u. 
+        |<strong>I</strong><sub>S</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u.) 
+        |<strong>I</strong><sub>R</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u.</td>
+    </tr>
+</table>
+<p class="jb1">
+If we now pick the best of the best segments of these curves and combine them &ndash; we 
+achieve the graph of Fig.&nbsp;15. Curve 1 is the maximized power flow, curve 2 is 
+the minimized power flow, curve 3 is the power flow of the line compensated by an SVC, and
+curve 4 is the power flow on the uncompensated line. 
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/pdelta04.gif" alt="P-delta"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;15</td>
+        <td class="jbFigCap">HPFC P&ndash;&delta; curves:&nbsp; 
+        |<strong>V</strong><sub>X</sub>|&nbsp;&lt;&nbsp;0.2&nbsp;p.u. 
+        |<strong>V</strong><sub>Y</sub>|&nbsp;&lt;&nbsp;0.2&nbsp;p.u. <br>
+        |<strong>V</strong><sub>1</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u. 
+        |<strong>V</strong><sub>2</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u. 
+        |<strong>I</strong><sub>S</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u.) 
+        |<strong>I</strong><sub>R</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u.</td>
+    </tr>
+</table>
+
+<p class="jb1">
+Finally, Fig.&nbsp;16 shows the plots of current magnitudes &ndash; the same labels are used as
+in the previous diagram. We see that current limiting is successfully applied.
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/pdelta05.gif" alt="P-delta"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;16</td>
+        <td class="jbFigCap">HPFC P&ndash;&delta; curves:&nbsp; 
+        |<strong>V</strong><sub>X</sub>|&nbsp;&lt;&nbsp;0.2&nbsp;p.u. 
+        |<strong>V</strong><sub>Y</sub>|&nbsp;&lt;&nbsp;0.2&nbsp;p.u. <br>
+        |<strong>V</strong><sub>1</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u. 
+        |<strong>V</strong><sub>2</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u. 
+        |<strong>I</strong><sub>S</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u.) 
+        |<strong>I</strong><sub>R</sub>|&nbsp;&lt;&nbsp;1.0&nbsp;p.u.</td>
+    </tr>
+</table>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<!--
+<h3 class="jb1"><a name="h-6.2" title="go back to this item in TOC" href="#toc-6.2">
+6.2</a>&nbsp;&nbsp;Effects of Point of Installation and Relative Converter Sizes
+</h3>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+-->
+<h3 class="jb1"><a name="h-6.3" title="go back to this item in TOC" href="#toc-6.3">
+6.2</a>&nbsp;&nbsp;Comparison of the HPFC with the UPFC
+</h3>
+<p class="jb1">
+Prior to this work, there was no systematic method available for 
+computing the reachable sets of a UPFC installed within the transmission line, while 
+respecting equipment and line limits. The formalism developed here for studying the HPFC, 
+namely introduction of equal power lines concept, can be successfully applied to solve the
+reachable sets of a UPFC. Details of the methodology inclusive of equipment and line limits
+are presented in <a class="jbjmpref" href="#ref-2">[2]</a>.
+</p>
+<p class="jb1">
+The P&ndash;&delta; curves of the HPFC and the P&ndash;&delta; curves of the UPFC are compared in 
+Fig&nbsp;17. Curves 1 and 2 correspond to the line controlled by the HPFC to maximize 
+and minimize the power flow, respectively; Curve 3 corresponds to the line compensated 
+by the underlying SVC; Curve 4 corresponds to the power flow on the uncompensated line; 
+Curves 5 and 6 correspond to the line controlled by the UPFC to maximize and minimize the power 
+flow, respectively; and curve 7 corresponds to the power flow on the line compensated by 
+the underlying STATCOM.
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/pdelta06.gif" alt="P-delta"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;17</td>
+        <td class="jbFigCap">Comparison of P&ndash;&delta curves &ndash; HPFC vs. UPFC </td>
+    </tr>
+</table>
+
+<p class="jb1">
+The performance of the two devices is nearly equivalent for &delta;&nbsp;&lt;&nbsp;75&deg;. 
+At values of &delta;&nbsp;&gt;&nbsp;75&deg; the UPFC offers somewhat better performance. 
+This can be attributed to the fact that the STATCOM is a device superior to the SVC, as 
+its ability to supply reactive power does not depend on terminal voltage. 
+</p>
+<p class="jb1">
+Comparison of curves 3 and 7 illustrates this difference projected onto power flow. 
+Another factor that contributes to better performance of the UPFC is the fact that it does 
+not need to limit the magnitude of current <strong>I</strong><sub>S</sub>. Nonetheless, 
+this performance gain comes at a substantially higher price, as the UPFC uses a converter 
+in place of an (often existing) SVC or switched capacitor. 
+</p>
+<p class="jb1">
+This example illustrates that the HPFC offers the performance characteristics similar to 
+those offered by the UPFC. Furthermore, in many cases the HPFC can be built using two 
+identical converter&ndash;transformer subassemblies &ndash; a significant advantage for
+practical installations where a spare transformer may be required for redundancy.
+</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h2 class="jb1"><a name="h-7" title="go back to this item in TOC" href="#toc-7">
+7</a>&nbsp;&nbsp;Alternative HPFC Topologies
+</h2>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h2 class="jb1"><a name="h-8" title="go back to this item in TOC" href="#toc-8">
+8</a>&nbsp;&nbsp;References
+</h2>
+    <ol class="jbTOC">
+        <li><a name="ref-1"></a>J.&nbsp;Bebic, "<em>A Symmetrical Hybrid Power Flow Controller</em>", Ph.D. Thesis, University of Toronto, 2003.</li>
+        <li><a name="ref-2"></a>J.&nbsp;Bebic, P.&nbsp;W.&nbsp;Lehn, M.&nbsp;R.&nbsp;Iravani&nbsp;"<em>P&ndash;&delta; Characteristics for the Unified Power Flow Controller &ndash; Analysis Inclusive of Equipment Ratings and Line Limits</em>&quot; IEEE Trans. Power Delivery, vol. 18, no. 3, pp. 1066&ndash;1072, July 2003. </li>
+    </ol>
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<!-- Foot of the page (always the same) -->
+<p class="jbFoot">
+    <a href="welcome.html">Welcome</a>&nbsp;|&nbsp;
+    <a href="about.html">About&nbsp;us</a>&nbsp;|&nbsp;
+    <a href="facts.html">What&nbsp;is&nbsp;FACTS?</a>&nbsp;|&nbsp;
+    <a href="hpfc.html">What&nbsp;is&nbsp;HPFC?</a>&nbsp;|&nbsp;
+    <a href="downloads.html">Downloads</a>&nbsp;|&nbsp;
+    <a href="contact.html">Contact&nbsp;us</a>
+</p>
+        </td>
+    </tr>
+    </table>
+</body>
+</html> 

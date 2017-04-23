@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<!-- ********************************************************************** -->
+<!-- File name: facts.html -->
+<!-- Subject: Introduction to FACTS -->
+<!-- -->
+<!-- Created: Nov 11/03 -->
+<!-- Original Issue: Nov 26/03 -->
+<!-- Last Edited: Oct 13/05 -->
+<!-- Latest Rev. #: 1 -->
+<!-- -->
+<!-- Ref. Docs. & web sites: 
+        jbside.html
+        http://www.w3.org/TR/html4/
+        http://www.w3.org/TR/CSS1
+        http://www.alistapart.com/articles/practicalcss/
+-->
+<!-- Revision Notes: 
+Rev. #: 1 (Sep 26/05 by JB)
+Eliminating sarcastic remarks about transmission planning software etc.
+Rev. #: 0 (Nov 11-26/03 by JB)
+Introduction to FACTS page. 
+By Nov 26/03, the content took the rough shape. Further refinements from then on...
+-->
+<head>
+    <title>The Hybrid Power Flow Controller - Introduction to FACTS</title>
+    <link type="text/css" rel="stylesheet" href="styles/hpfc.css">
+    <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+    <meta name="author" content="Jovan Bebic">
+    <meta name="keywords" content="hybrid power flow controller, HPFC, power flow controller, flexible AC transmission, FACTS, STATCOM, SSSC, SVC, power flow, load flow">
+    <meta name="description" content="Hybrid Power Flow Controller (HPFC) uses power electronics converters to enhance the functionality of existing reactive power support in the transmission system">
+    <script language="JavaScript" src="scripts/hpfc.js" type="text/JavaScript"></script>
+</head>
+<body>
+    <!-- The screen is vertically divided for navigation and body text -->
+    <a name="top"></a><table class="jbBase" cellspacing="0" border="0">
+    <tr>
+    <td class="jbBaseSideNav"> 
+      <table>
+            <!-- Side Navigation -->
+            <tr><td align="center"><img src="images/hpfc_logo.gif" alt="hpfc_logo"></td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="welcome.html" target="_top">Welcome!</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="about.html" target="_top">About us</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOn" href="facts.html" target="_top">What is FACTS?</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="hpfc.html" target="_top">What is HPFC?</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="downloads.html" target="_top">Downloads</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="contact.html" target="_top">Contact us</a></td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNavFootA">Last Updated</td></tr>
+            <tr><td class="jbSideNavFootB">
+                <script language="JavaScript" type="text/JavaScript">
+                <!-- 
+                jbDate();
+                //-->
+                </script>
+                <noscript>N/A</noscript>
+                </td>
+            </tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkImg" href="http://validator.w3.org/check/referer"><img class="jbW3img" src="images/valid-html401.gif" alt="Valid HTML 4.01!"></a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkImg" href="http://jigsaw.w3.org/css-validator/check/referer"><img class="jbW3img" src="images/valid-css.gif" alt="Valid CSS!"></a></td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            </table>
+        </td>
+    <td class="jbBaseTxt">
+<!-- Body text is pasted here -->
+<!-- First the title (always the same) -->
+<h1 class="jbTitleA">The Symmetrical<br>
+    <span class="jbHilite">H</span>ybrid 
+    <span class="jbHilite">P</span>ower 
+    <span class="jbHilite">F</span>low 
+    <span class="jbHilite">C</span>ontroller
+</h1>
+<p class="jbTitleB">A new technology for Flexible AC Transmission (FACTS)</p>
+<!-- Actual content text -->
+<h2 class="jb1">Introduction to FACTS</h2>
+<p class="jb1">The main purpose of this page is to set the stage for introducing the HPFC through 
+the comparison with other, better known, FACTS controllers. To facilitate this comparison we 
+review the topologies of the three widely known FACTS controllers, namely the STATCOM, the SSSC, and 
+the UPFC. Since all of these controllers are <em>converter based</em>, we start by reviewing the 
+basics of the voltage-sourced converters from the perspective of their application in the 
+transmission system.
+</p>
+<p class="jb1">For completeness, however, we also provide some history and a few basic 
+definitions. </p>
+
+<p class="jb1">Finally, if you are seeking a comprehensive and authoritative reference in this field, 
+we wholeheartedly recommend that you start with the book by N.&nbsp;G.&nbsp;Hingorani and L.&nbsp;Gyugyi, 
+<em>"Understanding&nbsp;FACTS Concepts and Technology of Flexible AC Transmission System"</em>, IEEE 
+Press 1999. Alternatively, you can consult an excellent survey 
+paper by Dr.&nbsp;Hingorani titled <em>"Flexible ac transmission"</em>, 
+published in the April 1993 edition of IEEE Spectrum. 
+</p>
+<h2 class="jb1">Table of Contents</h2>
+    <ol class="jbTOC">
+        <li><a name="toc-1" href="#h-1">So, just what is "FACTS"?</a></li>
+        <li><a name="toc-2" href="#h-2">Basics of Voltage-Sourced Converters</a></li>
+        <li><a name="toc-3" href="#h-3">STATic COMpensator (STATCOM)</a></li>
+        <li><a name="toc-4" href="#h-4">Static Synchronous Series Compensator (SSSC)</a></li>
+        <li><a name="toc-5" href="#h-5">Unified Power Flow Controller (UPFC)</a></li>
+        <li><a name="toc-6" href="#h-6">References</a></li>
+    </ol>
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<h2 class="jb1"><a name="h-1" title="go back to this item in TOC" href="#toc-1">
+1</a>&nbsp;&nbsp;So, just what is "FACTS"?
+</h2>
+<p class="jb1">According to this Author's research, the acronym <em><strong>FACTS</strong></em> was 
+first introduced by Dr.&nbsp;Hingorani, at the joint APC/IEEE luncheon speech on April&nbsp;19,&nbsp;1988 
+<a class="jbjmpref" href="#ref-1">[1]</a>.</p>
+<p class="jbCiteA">
+<em>
+    Allow me to introduce a new concept of a thyristor-assisted ac power system. I have called this concept 
+    "Flexible AC Transmission System" or FACTS. <br>
+    ... <br>
+    It (the concept of FACTS) is a collection of thyristor based controllers, including phase shifters, 
+    advanced static VAR compensator, dynamic brake, modulator series capacitor, load tap changer, 
+    fault current limiter, and perhaps other that have yet to be invented. 
+</em></p>
+<p class="jbCiteB">N.&nbsp;G.&nbsp;Hingorani 1988&nbsp;<a class="jbjmpref" href="#ref-1">[1]</a></p>
+<p class="jb1">Today, the concept of FACTS includes not only "thyristor based controllers" but all 
+"power electronic-based" and other "static controllers". The 1999 definitions are:</p>
+<p class="jbCiteA">
+<em>
+    <strong>Flexibility of Electric Power Transmission:</strong><br>
+        The ability to accommodate changes in the electric transmission system or operating 
+        conditions while maintaining sufficient steady-state and transient margins.<br><br>
+    <strong>Flexible AC Transmission System (FACTS):</strong><br>
+        Alternating current transmission system incorporating power electronic-based and 
+        other static controllers to enhance controllability and increase power transfer 
+        capability.<br><br>
+    <strong>FACTS Controller:</strong><br>
+        A power electronic-based system and other static equipment that provide control of
+        one or more AC transmission system parameters.
+</em></p>
+<p class="jbCiteB">"Understanding FACTS"&nbsp;<a class="jbjmpref" href="#ref-2">[2]</a></p>
+
+<p class="jb1">So, speaking in loose terms, the <em>big idea</em> is to connect some fancy 
+new equipment to the transmission system and use it to control the flow of power through 
+the system. 
+</p>
+
+<p class="jb1">That sounds reasonable - why isn't it done already? </p>
+
+<p class="jb1">Well, the technology is relatively new and therein lies the problem. 
+First, demonstrated FACTS availability is on order of 99.5%, and that is deemed 
+insufficient by many utilities. Then, since the technology is new, it has not been 
+fully incorporated into software tools for system planning and dispatching. As a result, 
+there isn't yet a straightforward way to build a value story for FACTS.</p>
+
+<p class="jb1"> To build a value story for FACTS we need software tools that would be able to 
+select both the optimal types and the optimal locations of FACTS controllers within the 
+system, and then compare the investment required with the benefits arising from reduced 
+fuel costs, reduced system congestion, reduced emissions, increased utilization of 
+renewable sources, increased system security... </p>
+
+<p class="jb1"> Sounds nice? Of course - but we don't have these tools, and it will likely take us 
+a while to develop them, and then a while longer to start using them. And meanwhile, <em>poor FACTS 
+devices</em> wait for the better times ;) </p>
+
+<p class="jb1"> Well then, with all these impediments, why should anyone think that FACTS 
+controllers have the future? It is really quite simple - our transmission infrastructure is 
+falling behind our needs, and - whether we like it or not - we will have to get creative. 
+</p>
+
+<p class="jbCiteA">
+<em>
+    In the past, transmission systems were conservatively designed with large stability 
+    margins and the then-available dynamic compensators, ... , were rarely required. <br>
+    <br>
+    In recent years, energy, environment, right-of-way, and cost problems delayed the 
+    construction of both generation facilities and new transmission lines. This has 
+    necessitated a change in the traditional power system concepts and practices; 
+    <strong>better utilization</strong> of existing power systems has become imperative.</em> </p>
+<p class="jbCiteB">L.&nbsp;Gyugyi 1988&nbsp;<a class="jbjmpref" href="#ref-3">[3]</a></p>
+
+<p class="jb1">
+And it is the emerging field of FACTS that offers the most practical answers for this challenge. 
+</p>
+
+<p class="jb1">So, let us go back to the task at hand and look at some of the FACTS controllers 
+and the power electronic-based equipment that these controllers are built with...</p>
+
+<p class="jb1">One of the most commonly used power electronic-based building blocks is a voltage-sourced 
+converter (VSC). Let us now review the basic concepts of VSCs with respect to their application 
+in a transmission system. 
+</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h2 class="jb1"><a name="h-2" title="go back to this item in TOC" href="#toc-2">
+2</a>&nbsp;&nbsp;Basics of Voltage-Sourced Converters
+</h2>
+
+<p class="jb1">A basic building block of any voltage-sourced converter (VSC) is the three-phase 
+converter bridge. One commonly known configuration for a three-phase bridge is shown in Fig.&nbsp;1. 
+The bridge has two DC terminals (indicated by &quot;+&quot; and &quot;&minus;&quot;) 
+and three AC terminals (&quot;~&quot;) in the mid points of the converter legs. 
+By controlling the states of switches in the legs we can produce arbitrary voltage waveforms 
+at the AC terminals.
+</p>
+
+<p class="jbCen"><img class="jbFigImg" src="images/vsc_basics_1.gif" alt="three-phase converter bridge"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;1</td>
+        <td class="jbFigCap">A three-phase converter bridge - the basic building block of a VSC</td>
+    </tr>
+</table>
+
+<p class="jb1">Now, when a VSC is interfaced to a transmission system it has to: (i) operate at the 
+line frequency, and (ii) produce a balanced set of sinusoidal voltages. Therefore, a VSC coupled to 
+the transmission system has only <strong>two control degrees of freedom</strong> - it can vary the magnitude 
+and the phase angle of its output voltage relative to the system voltage.</p>
+
+<p class="jb1">These two control degrees of freedom can be mapped into freedom to exchange active 
+and reactive power with the transmission system. The amount of exchanged reactive power is limited 
+only by the current capacity of the converter switches, while the active power coupled to (from) the 
+line has to be supplied from (delivered to) the DC terminals, as shown symbolically in Fig.&nbsp;2.
+</p>
+
+<p class="jbCen"><img class="jbFigImg" src="images/vsc_basics_2.gif" alt="P, Q exchange VSC/transmission line"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;2</td>
+        <td class="jbFigCap">A VSC interfaced to a transmission line - P, Q exchange</td>
+    </tr>
+</table>
+
+<p class="jb1">Let us now look at the three exemplary FACTS controllers.</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<h2 class="jb1"><a name="h-3" title="go back to this item in TOC" href="#toc-3">
+3</a>&nbsp;&nbsp;STATic COMpensator (STATCOM)
+</h2>
+<p class="jb1">The STATic COMpensator (STATCOM) uses a VSC interfaced in shunt to a transmission line. 
+In most cases the DC voltage support for the VSC will be provided by the DC capacitor of relatively 
+small energy storage capability - hence, in steady state operation, active power exchanged with 
+the line has to be maintained at zero, as shown symbolically in Fig.&nbsp;3. </p>
+<p class="jbCen"><img class="jbFigImg" src="images/statcom.gif" alt="STATCOM - topology"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;3</td>
+        <td class="jbFigCap"><strong>STATCOM</strong> - A VSC interfaced in shunt to a transmission line</td>
+    </tr>
+</table>
+<p class="jb1">
+With the active power constraint imposed, the control of the STATCOM is reduced to one 
+degree of freedom, which is used to control the amount of reactive power exchanged with 
+the line. Accordingly, a STATCOM is operated as a functional equivalent of a static 
+VAR compensator; it provides faster control than an SVC and improved control range.
+</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<h2 class="jb1"><a name="h-4" title="go back to this item in TOC" href="#toc-4">
+4</a>&nbsp;&nbsp;Static Synchronous Series Compensator (SSSC)
+</h2>
+<p class="jb1">The Static Synchronous Series Compensator (SSSC) uses a VSC interfaced in series 
+to a transmission line, as shown in Fig.&nbsp;4. 
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/sssc.gif" alt="SSSC - topology"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;4</td>
+        <td class="jbFigCap"><strong>SSSC</strong> - A VSC interfaced in series to a transmission line</td>
+    </tr>
+</table>
+<p class="jb1"> Again, the active power exchanged with the line has to be maintained at 
+zero - hence, in steady state operation, SSSC is a functional equivalent of an infinitely 
+variable series connected capacitor. The SSSC offers fast control and it is inherently neutral 
+to sub-synchronous resonance. 
+</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<h2 class="jb1"><a name="h-5" title="go back to this item in TOC" href="#toc-5">
+5</a>&nbsp;&nbsp;Unified Power Flow Controller (UPFC)
+</h2>
+<p class="jb1">The Unified Power Flow Controller (UPFC) combines the above two compensators 
+into one. The DC terminals of the two underlying VSCs are now coupled, and this creates a path 
+for active power exchange between the converters. Hence, the active power supplied to the 
+line by the series converter, can now be supplied by the shunt converter, as shown 
+in Fig.&nbsp;5. 
+<!-- Hence, the series converter can now inject a voltage vector in an arbitrary direction 
+relative to the line current vector. 
+-->
+</p>
+<p class="jbCen"><img class="jbFigImg" src="images/upfc.gif" alt="UPFC - topology"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;5</td>
+        <td class="jbFigCap"><strong>UPFC</strong> - Coupling of converters' DC terminals 
+        offers a fundamentally different range of control options</td>
+    </tr>
+</table>
+<p class="jb1">This topology offers three degrees of freedom, or more precisely - four 
+degrees of freedom (two associated with each VSC) with one constraint (active powers 
+of the VSCs must match). Therefore, a fundamentally different range of control options 
+is available compared to STATCOM or SSSC. The UPFC can be used to control the flow of 
+active and reactive power through the line and to control the amount of reactive power 
+supplied to the line at the point of installation.
+</p>
+<p class="jb1">Perhaps the only downside of this topology is that it is entirely 
+converter based, i.e., it uses the converters to supply both active and reactive power. 
+Let us explain...
+</p>
+<p class="jb1">For efficient operation transmission systems need distributed reactive 
+power support. This is commonly accomplished by installing banks of capacitance at strategic 
+locations within the system, and by switching these banks in and out as needed. 
+The UPFC can make limited use of such hardware; by definition it uses the shunt converter 
+to supply the active power coupled by the series converter, and once the shunt converter 
+is in place it is also used to supply all of the needed reactive power.
+</p>
+<p class="jb1">Conceptually, this feature seems advantageous as we are now getting &quot;the 
+free STATCOM&quot; to supply the reactive power - the reality however is that this STATCOM is 
+NOT FREE after all! In fact, in cases where the reactive power support exists, an argument could 
+be made that by requiring the STATCOM we are forcing the owner to decommission a 
+&quot;perfectly good&quot; battery of shunt capacitors, and that is not the kind of 
+news many owners like to hear.
+</p>
+<!--
+<p class="jb1">Our proposed new controller, the HPFC, uses two equally rated voltage-sourced 
+converters to upgrade the functionality of the existing switched capacitors or static VAR 
+compensators. By using appropriate converter control this functionality can be changed from 
+reactive power support to the generalized power flow control - the functionality commonly 
+associated with the UPFC. The key benefit of the new topology is that it fully utilizes 
+existing equipment and thereby the required ratings of the additional converters are 
+substantially lower than the ratings of the comparable UPFC.
+</p>
+-->
+<p class="jb1">Our proposed new controller, the HPFC, offers performance characteristics 
+similar to those of the UPFC. The key benefit of the new topology is that it fully utilizes 
+existing equipment (switched capacitors or SVCs), and thereby the required ratings of the 
+additional converters are substantially lower than the ratings of the comparable UPFC.
+</p>
+
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+
+<h2 class="jb1"><a name="h-6" title="go back to this item in TOC" href="#toc-6">6</a>&nbsp;&nbsp;References</h2>
+    <ol class="jbTOC">
+        <li><a name="ref-1"></a>N.&nbsp;G.&nbsp;Hingorani, "High Power Electronics and Flexible AC Transmission System", <em>IEEE Power Engineering Review</em>, July 1988.</li>
+        <li><a name="ref-2"></a>N.&nbsp;G.&nbsp;Hingorani and L.&nbsp;Gyugyi, "<em>Understanding FACTS, Concepts and Technology of Flexible AC Transmission System</em>", IEEE Press, 1999.</li>
+        <li><a name="ref-3"></a>L.&nbsp;Gyugyi&nbsp;&quot;Power Electronics in Electric Utilities: Static Var Compensators&quot;, <em>Proceedings of the IEEE</em>, Vol.&nbsp;76, No.&nbsp;4, April 1988.</li>
+    </ol>
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<!-- Foot of the page (always the same) -->
+<p class="jbFoot">
+    <a href="welcome.html">Welcome</a>&nbsp;|&nbsp;
+    <a href="about.html">About&nbsp;us</a>&nbsp;|&nbsp;
+    <a href="facts.html">What&nbsp;is&nbsp;FACTS?</a>&nbsp;|&nbsp;
+    <a href="hpfc.html">What&nbsp;is&nbsp;HPFC?</a>&nbsp;|&nbsp;
+    <a href="downloads.html">Downloads</a>&nbsp;|&nbsp;
+    <a href="contact.html">Contact&nbsp;us</a>
+</p>
+        </td>
+    </tr>
+    </table>
+</body>
+</html> 

@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<!-- ********************************************************************** -->
+<!-- File name: jbside.html -->
+<!-- Subject: template page for side menu page layout -->
+<!-- -->
+<!-- Created: Nov 4/03 -->
+<!-- Original Issue: Nov 21/03 -->
+<!-- Last Edited: Nov 25/03 -->
+<!-- Latest Rev. #: 0 -->
+<!-- -->
+<!-- Ref. Docs. & web sites: 
+        http://www.w3.org/TR/html4/
+        http://www.w3.org/TR/CSS1
+        http://www.alistapart.com/articles/practicalcss/
+-->
+<!-- Revision Notes: 
+Rev. #: 0 (Nov 4-25/03 by JB)
+Cascading Style Sheets (CSS) are a way to go, however, older browsers (notably 
+NN4x) do not fully support CSS1 specification. IE5 offers somewhat better support, 
+but it is also quite buggy.
+It is therefore possible to have a CSS1 compliant web page that renders 
+nicely in advanced browsers (IE6+, NN6+), yet falls apart in earlier 
+browser versions. 
+So, after much experimentation, this template was created as a tradeoff between
+portability and backwards compatibility. It is to be used as a template for all
+pages in the www.hpfc.ca project.
+-->
+<head>
+    <title>Hybrid Power Flow Controller - Side navigation template page</title>
+    <link type="text/css" rel="stylesheet" href="styles/hpfc.css">
+    <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+    <meta name="author" content="Jovan Bebic">
+    <meta name="keywords" content="hybrid power flow controller, HPFC, 
+    power flow controller, flexible AC transmission, FACTS, 
+    UPFC, STATCOM, SSSC, SVC, power flow, load flow">
+    <meta name="description" content="Hybrid Power Flow Controller (HPFC) 
+    uses power electronics converters to enhance the functionality of existing 
+    reactive power support in the transmission system">
+    <script language="JavaScript" src="scripts/hpfc.js" type="text/JavaScript"></script>
+</head>
+<body>
+    <!-- The screen is vertically divided for navigation and body text -->
+    <a name="top"></a>
+    <table class="jbBase" cellspacing="0" border="0">
+    <tr>
+    <td class="jbBaseSideNav"> 
+      <table>
+            <!-- Side Navigation -->
+            <tr><td align="center"><img src="images/hpfc_logo.gif" alt="hpfc_logo"></td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOn" href="welcome.html" target="_top">Welcome!</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="about.html" target="_top">About us</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="facts.html" target="_top">What is FACTS?</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="hpfc.html" target="_top">What is HPFC?</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="downloads.html" target="_top">Downloads</a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkOff" href="contact.html" target="_top">Contact us</a></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            <tr><td class="jbSideNavFootA">Last Updated</td></tr>
+            <tr><td class="jbSideNavFootB">
+                <script language="JavaScript" type="text/JavaScript">
+                <!-- 
+                jbDate();
+                //-->
+                </script>
+                <noscript>N/A</noscript>
+                </td>
+            </tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkImg" href="http://validator.w3.org/check/referer"><img class="jbW3img" src="images/valid-html401.gif" alt="Valid HTML 4.01!"></a></td></tr>
+            <tr><td class="jbSideNav"><a class="jbSideLnkImg" href="http://jigsaw.w3.org/css-validator/check/referer"><img class="jbW3img" src="images/valid-css.gif" alt="Valid CSS!"></a></td></tr>
+            <tr><td class="jbSideNav">&nbsp;</td></tr>
+            </table>
+        </td>
+    <td class="jbBaseTxt">
+<!-- Body text is pasted here -->
+<!-- First the title (always the same) -->
+<h1 class="jbTitleA">A Symmetrical<br>
+    <span class="jbHilite">H</span>ybrid 
+    <span class="jbHilite">P</span>ower 
+    <span class="jbHilite">F</span>low 
+    <span class="jbHilite">C</span>ontroller
+</h1>
+<p class="jbTitleB">A new technology for Flexible AC Transmission (FACTS)</p>
+<!-- Actual content text -->
+<h2 class="jb1">Abstract</h2>
+<h2 class="jb1">Table of Contents</h2>
+    <ol class="jbTOC">
+        <li><a name="toc-1" href="#h-1">IEEE Definitions</a>
+            <ol class="jbTOC">
+            <li><a name="toc-1.1" href="#h-1.1">Voltage-Sourced Converter (VSC)</a></li>
+            <li>STAtic COMpensator (STATCOM)</li>
+            </ol>
+        </li>
+        <li>VSC Basics</li>
+        <li>STATic COMpensator (STATCOM)</li>
+        <li>Static Synchronous Series Compensator (SSSC)</li>
+        <li>Unified Power Flow Controller (UPFC)</li>
+        <li><a name="toc-6" href="#h-6">References</a></li>
+    </ol>
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<h2 class="jb1"><a name="h-1" title="go back to this item in TOC" href="#toc-1">1</a>&nbsp;&nbsp;IEEE Definitions</h2>
+<p class="jb1">I will make a brief introduction on where I got the IEEE definitions from. 
+  Adding text to show line breaks. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly.</p>
+<p class="jbCen"><img class="jbFigImg" src="images/hpfc_logo.gif" alt="hpfc logo"></p>
+<table class="jbInd">
+    <tr>
+        <td class="jbFigNo">Fig.&nbsp;2.1</td>
+        <td class="jbFigCap">Static Synchronous Series Compensator (SSSC) - Topology bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</td>
+    </tr>
+</table>
+<p class="jb1">Here is another paragraph to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly.</p>
+  <p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<h3 class="jb1"><a name="h-1.1" title="go back to this item in TOC" href="#toc-1.1">1.1</a>&nbsp;&nbsp;Voltage-Sourced Converter (VSC)</h3>
+<p class="jb1">Here is another paragraph to fill up the page. It is apparent that each of the controlled variables includes both the products of state
+variables, and the products of control variables and state variables.
+Second, this is a system of variable structure. It is apparent from the equivalent circuit
+that the order of the system depends on the value of BM. This will be discussed in greater
+detail in Chapter 5; for now, it suffices to say that when B<sub>M</sub>&nbsp;&gt;&nbsp;0 real and imaginary
+components of VM are the state variables, while when B<sub>M</sub>&nbsp;&lt;&nbsp;0 voltage VM is a linear
+combination of other system voltages. </p>
+<p class="jbCiteA"><em>Here is a citation <strong>from</strong> some book. Here is a citation from some book. Here is 
+a citation from some book.</em></p>
+<p class="jbCiteB"><em>Understanding FACTS</em>&nbsp;<a class="jbjmpref" href="#ref-1">[1]</a></p>
+<p class="jb1">Here is another paragraph to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly.</p>
+<p class="jb1">Here is another paragraph to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly.</p>
+<p class="jb1">Here is another paragraph to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly. Adding more text to fill up the page. I want 
+  to verify that the navigation tags are working correctly.</p>
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<h2 class="jb1"><a name="h-6" title="go back to this item in TOC" href="#toc-6">6</a>&nbsp;&nbsp;References</h2>
+    <ol class="jbTOC">
+        <li><a name="ref-1"></a>Facts Book</li>
+        <li><a name="ref-2"></a>Some paper</li>
+        <li><a name="ref-3"></a>Some other paper</li>
+    </ol>
+<p class="jb1"><a class="jbjmp" href="#top">back to top</a></p>
+<!-- Foot of the page (always the same) -->
+<p class="jbFoot">
+    <a href="welcome.html">Welcome</a>&nbsp;|&nbsp;
+    <a href="about.html">About&nbsp;us</a>&nbsp;|&nbsp;
+    <a href="facts.html">What&nbsp;is&nbsp;FACTS?</a>&nbsp;|&nbsp;
+    <a href="hpfc.html">What&nbsp;is&nbsp;HPFC?</a>&nbsp;|&nbsp;
+    <a href="downloads.html">Downloads</a>&nbsp;|&nbsp;
+    <a href="contact.html">Contact&nbsp;us</a>
+</p>
+        </td>
+    </tr>
+    </table>
+</body>
+</html> 

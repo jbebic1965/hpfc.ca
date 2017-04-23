@@ -1,0 +1,350 @@
+/* **********************************************************************
+Title: hpfc.css
+Subject: Definitions of styles for HPFC Web site
+
+Created: Nov 4/03
+Original Issue: Pending
+Last Edited: Nov 25/03
+Latest Rev. #: DRAFT
+
+Ref. Docs.: 
+    http://www.w3.org/TR/CSS1
+
+Revision Notes:
+Draft (Nov 4-xx/03 by JB)
+Using CSS1 to apply formating to the web pages at www.hpfc.ca. 
+Using tables for basic screen positioning, however, all 
+table properties are set outside the HTML - a good thing :)
+
+********************************************************************** */
+
+
+/********** GENERAL SETTINGS */
+/* 
+Layout: 
+The screen is divided vertically into two sections:
+Left: Logo and Navigation 
+Right: Presentation of the selected topic
+
+Navigation:
+Logo is above the menu items.
+Navigation pane background image: NONE 
+
+Menu is done as table cells with backgrounds
+dependent on selection.
+*/
+
+
+/* Specifying main body font and characteristics */
+body {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {text-align: left}
+h1, h2, h3 { color: navy; }
+h1 { font: 170% sans-serif }
+h2 { font: 140% sans-serif }
+h3 { font: 120% sans-serif }
+h4 { font: bold 100% sans-serif }
+h5 { font: italic 100% sans-serif }
+h6 { font: small-caps 100% sans-serif }
+
+pre { 
+    font-family: monospace;
+}
+
+/********** Bug fixes */
+
+/* IE5 */
+div.jbBugFix1 {
+    text-align: center;
+}
+
+/********** Basic screen division into 2 vertical regions "Side Navigation" and "Text" */
+.jbBase {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.jbBaseSideNav {
+    width: 170px;
+    vertical-align: top;
+    padding-top: 2px;
+    /* padding-right: 0px; */
+    /* padding-bottom: 0px; */
+    /* padding-left: 5px; */
+    background-color: #006;
+}
+
+.jbBaseTxt {
+    /* width: 620px; */
+    vertical-align: top;
+    /* margin-top: 5px; */
+    /* margin-right: 5px; */
+    /* margin-bottom: 0px; */
+    /* margin-left: 15px; */
+    background-color: #ddd;
+}
+
+/********** Specifics for Text part */
+
+/* Links */
+.jbBaseTxt a:link, .jbBaseTxt a:active, .jbBaseTxt a:visited {
+    color: navy;
+    text-decoration: none;
+}
+
+.jbBaseTxt a:hover {
+    background: #ffa;
+}
+
+/* Links for jumping back to top */
+.jbBaseTxt a.jbjmp {
+    font-family: sans-serif;
+    font-size: x-small;
+}
+
+/* Paragraph */
+.jbBaseTxt p.jb1 {
+    margin-right: 15px;
+    margin-left: 15px;
+    font-family: helvetica, arial, sans-serif;
+    /* font-family: sans-serif; */
+    /* font-size: small; */
+}
+
+.jbBaseTxt h2.jb1 {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.jbBaseTxt h3.jb1 {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+/* Table od Contents */
+.jbBaseTxt ol.jbTOC {
+    /* font-family: verdana, arial, helvetica, sans-serif; */
+    font-family: sans-serif;
+}
+
+/* Table element "Ind" (indented) for indenting caption of figures */
+table.jbInd {
+    margin-left: 60px;
+    margin-right: 30px;
+}
+
+table.jbForm {
+    margin-left: 60px;
+    margin-right: 30px;
+}
+
+
+td.jbFigNo {
+    width: 50px;
+    font-family: sans-serif;
+    /* font-size: small; */
+    vertical-align: top;
+}
+
+td.jbFigCap {
+    /* width: 450px; */
+    font-family: sans-serif;
+    /* font-size: small; */
+    vertical-align: top;
+}
+
+td.jbFormLeft {
+    /* width: 450px; */
+    font-family: sans-serif;
+    /* font-size: small; */
+    vertical-align: top;
+    text-align: right;
+}
+
+td.jbFormRight {
+    /* width: 450px; */
+    font-family: sans-serif;
+    /* font-size: small; */
+    vertical-align: top;
+    text-align: left;
+    padding-left: 15px;
+}
+
+/* Figures */
+/* centered paragraph around image */
+.jbBaseTxt p.jbCen {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    /* border: solid thin navy; */
+}
+
+img.jbFigImg {
+    /* width: 100%; */
+    border: solid thin navy;
+}
+
+.jbBaseTxt p.jbFoot {
+    /* font-family: verdana, arial, helvetica, sans-serif; */
+    font-family: sans-serif;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Formating the page title */
+.jbBaseTxt h1.jbTitleA {
+    margin-top: 15px;
+    margin-right: 15px;
+    margin-bottom: 0px;
+    margin-left: 15px;
+    text-align: right;
+    color: navy;
+    /* border-bottom: solid navy thin; */
+    border-style: none none solid none;
+    border-bottom-width: thin;
+    border-color: navy;
+}
+
+.jbBaseTxt p.jbTitleB {
+    margin-top: 0px;
+    margin-right: 15px;
+    margin-bottom: 15px; 
+    margin-left: 1em;
+    text-align: right;
+    font-size: medium;
+    color: navy;
+}
+
+/* Highlight of the first letter in the page title */
+.jbBaseTxt .jbHilite {
+    /* color: red; */
+    /* color: #f93; light orange */
+    color: #c60; /* dark orange */
+    /* color: orange; */
+}
+
+/* Citations from books and papers */
+.jbBaseTxt p.jbCiteA {
+    background: #def; /* sky blue */
+    margin-left: 45px;
+    margin-right: 45px;
+    margin-bottom: 0px;
+    padding-top: 15px;
+    padding-right: 15px; 
+    padding-bottom: 5px; 
+    padding-left: 15px; 
+    border: none;
+    font-size: medium;
+    /* font-family: verdana, arial, helvetica, sans-serif; */
+    font-family: sans-serif;
+    /* font-style: italic; */
+    text-align: left;
+}
+.jbBaseTxt p.jbCiteB {
+    /* background: #dad; nice purple */
+    /* background: #9bd; nice blue */
+    background: #def; /* sky blue */
+    margin-left: 45px;
+    margin-right: 45px;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-right: 15px; 
+    padding-bottom: 5px; 
+    padding-left: 15px; 
+    border: none;
+    font-size: small;
+    /* font-family: verdana, arial, helvetica, sans-serif; */
+    font-family: sans-serif;
+    /* font-style: italic; */
+    text-align: right;
+}
+
+/* a.jbjmpref {font-style: normal} */
+
+/********** Specifics for Side Navigation */
+
+/* Side navigation text */
+.jbSideNav
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+    color: white;
+    padding-left: 10px;
+}
+
+img.jbW3img {
+    border: 0;
+    width: 88px;
+    height: 31px;
+}
+
+.jbSideNavFootA
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: small; 
+    font-style: normal;
+    font-weight: bold;
+    color: white;
+    padding-left: 10px;
+}
+
+.jbSideNavFootB
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: x-small; 
+    font-style: normal;
+    font-weight: normal;
+    /* color: #c60; dark orange */
+    color: #f93; /* light orange */
+    padding-left: 10px;
+}
+
+
+/* Links when Off and when On (selected) */
+a.jbSideLnkImg, a.jbSideLnkImg:visited, a.jbSideLnkImg:active {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    border: none;
+}
+
+a.jbSideLnkOff, a.jbSideLnkOff:visited, a.jbSideLnkOff:active {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+a.jbSideLnkOff:hover {
+    color: yellow;
+}
+
+a.jbSideLnkOn, a.jbSideLnkOn:visited, a.jbSideLnkOn:active, a.jbSideLnkOn:hover {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    color: yellow;
+}
